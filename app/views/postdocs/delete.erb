@@ -1,0 +1,14 @@
+<h1>Delete Postdocs </h1>
+<%if Postdoc.all.count > 0%>
+  <form action="/postdocs/delete" method="post">
+    <input type="hidden" id="hidden" name="_method" value="delete">
+
+    <% Postdoc.all.each do |pd| %>
+      <input id="<%= pd.name %>" type="checkbox" name="pds[]" value="<%= pd.id %>" ><%=pd.name %>
+    <% end %>
+    <br><br>
+
+    <input type="submit" id="Delete Postdocs" value="Delete Postdocs">
+  </form>
+
+<% end %>

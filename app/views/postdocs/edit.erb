@@ -1,0 +1,14 @@
+<form method = "post" action = "/postdocs/<%= @pd.slug%>">
+<input type="hidden" id="hidden" name="_method" value = "PATCH" / >
+Name: <input type = "text" name="name" value= "<%= @pd.name %>">
+Topic: <input type = "text" name="topic" value= "<%= @pd.topic %>">
+<br><br>
+Choose the affiliated grad students:
+<br>
+<% Grad.all.each do |grad| %>
+  <input id="<%= grad.name %>" type="checkbox" name="grads[]" value="<%= grad.id %>" <%='checked' if @pd.grads.include?(grad) %>><%=grad.name %>
+<% end %>
+<br><br>
+
+<input type = "submit" id="submit" value="Update" >
+</form>

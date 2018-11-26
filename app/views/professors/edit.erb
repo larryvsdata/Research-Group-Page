@@ -1,0 +1,7 @@
+<form method = "post" action = "/professors/<%= @professor.slug%>">
+<input type="hidden" id="hidden" name="_method" value = "PATCH" / >
+<input type = "text" name="name" value= "<%= @professor.name %>">
+<input type = "text" name="topic" value= "<%= @professor.topic %>">
+<input type = "password" name="password" >
+<input type = "submit" id="submit" value="Update" >
+</form>

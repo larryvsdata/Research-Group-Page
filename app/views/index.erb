@@ -1,0 +1,71 @@
+<% if @message %>
+<p> <%= @message%> </p>
+<%end%>
+<% @message = nil%>
+<% session[:message] = nil%>
+
+<style>
+p.a {
+    font-style: normal;
+}
+
+ul.b {
+    font: bold  ;
+}
+
+
+il.c {
+    font: italic  13px/30px Georgia, serif;
+}
+
+ul.c {
+    font-style: oblique ;
+}
+</style>
+
+<%if Professor.all.count > 0%>
+  <h1> <%=Professor.all.first.name.split[1] %> Research Group </h1>
+
+  <p>
+    <h2> Group Leader: </h2>
+    <il> <%=Professor.first.name %> , Research Interest: <%=Professor.first.topic %>  </il>
+
+  </p>
+<%end%>
+
+<p>
+  <h2> Post-Doctoral Researchers: </h2>
+  <%if Postdoc.all.count > 0%>
+      <%Postdoc.all.each do |pd|%>
+        <il> <%=pd.name %> , Research Interest: <%=pd.topic %>  </il>
+        <br>
+    &nbsp &nbsp &nbsp &nbsp  <ul class="c"> Affiliated graduate students: </ul>
+
+        <%if pd.grads.count > 0%>
+            <%pd.grads.each do |grad|%>
+              <il class="c"> <%=grad.name %>  </il>
+              <br>
+            <%end%>
+        <%else%>
+            <p> None at the moment. </p>
+        <%end%>
+      <%end%>
+  <%else%>
+      <p> None at the moment. </p>
+  <%end%>
+
+</p>
+
+
+<p>
+  <h2> Grad Students: </h2>
+  <%if Grad.all.count > 0%>
+      <%Grad.all.each do |grad|%>
+        <il> <%=grad.name %> , Research Interest: <%=grad.topic %>  </il>
+        <br>
+      <%end%>
+  <%else%>
+      <p> None at the moment. </p>
+  <%end%>
+
+</p>

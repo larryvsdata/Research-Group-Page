@@ -1,0 +1,14 @@
+<h1> Postdoc Sign Up Page </h1>
+<form action="/postdocs/signup" method="post">
+Name: <input type="text" name="name" id="name">
+Topic: <input type="text" name="topic" id="topic">
+<br><br>
+Choose the affiliated grad students:
+<br>
+<% Grad.all.each do |grad| %>
+  <input id="<%= grad.name %>" type="checkbox" name="grads[]" value="<%= grad.id %>" ><%=grad.name %>
+<% end %>
+<br><br>
+
+<input type="submit" value="Submit">
+</form>

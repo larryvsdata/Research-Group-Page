@@ -1,0 +1,14 @@
+<h1>Delete Grads </h1>
+<%if Grad.all.count > 0%>
+  <form action="/grads/delete" method="post">
+    <input type="hidden" id="hidden" name="_method" value="delete">
+
+    <% Grad.all.each do |grad| %>
+      <input id="<%= grad.name %>" type="checkbox" name="grads[]" value="<%= grad.id %>" ><%=grad.name %>
+    <% end %>
+    <br><br>
+
+    <input type="submit" id="Delete Grads" value="Delete Grads">
+  </form>
+
+<% end %>
